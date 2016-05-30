@@ -93,11 +93,15 @@ class VM {
     writeln("[xhvm - Shutdown] : " ~ name);
   }
 
-  private void execShell(string commandString) {
+  private void execShell(
+      string commandString
+  ) {
     spawnShell(commandString).wait;
   }
 
-  private string[string] buildArgsHash(VMOptions options) {
+  private string[string] buildArgsHash(
+      VMOptions options
+  ) {
     string[string] args;
 
     foreach (option; options.ConfiguredOptions) {
@@ -145,7 +149,9 @@ class VM {
     return args;
   }
 
-  private string buildArgs(string[string] argsHash) {
+  private string buildArgs(
+      string[string] argsHash
+  ) {
     //sudo xhyve $ACPI $MEM $SMP $PCI_DEV $LPC_DEV $NET $IMG_HDD -f kexec,$KERNEL,$INITRD,"$CMDLINE"
     string command = "sudo xhyve ";
 

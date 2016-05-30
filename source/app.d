@@ -8,7 +8,9 @@ import std.string,
 
 void help() {}
 
-void main(string[] args) {
+void main(
+    string[] args
+) {
   args = args[1..$];
 
   VMManager manager;

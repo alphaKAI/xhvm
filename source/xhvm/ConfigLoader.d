@@ -8,7 +8,9 @@ import std.stdio,
        std.path,
        std.json;
 
-VMOption detectOption(string key) {
+VMOption detectOption(
+    string key
+) {
   VMOption option;
   with (VMOption) final switch (key) {
     case "HDD":
@@ -61,7 +63,10 @@ VMOption detectOption(string key) {
   return option;
 }
 
-VMOptions ConfigLoader(VMMode mode, string path) {
+VMOptions ConfigLoader(
+    VMMode mode, 
+    string path
+) {
   VMOptions options = new VMOptions;
 
   if (!exists(path)) {

@@ -15,30 +15,35 @@ class VMManager {
   
   this() {
     this.ossPath = "/Users/" ~ getpwuid(geteuid).pw_name.to!string ~ "/xhyve-oss/";
-    if (!exists(this.ossPath)) {
-      mkdir(this.ossPath);
-    }
   }
 
-  public bool existVM(string vmName) {
+  public bool existVM(
+      string vmName
+  ) {
     return this.getVMList.canFind(vmName);
   }
 
-  public void setupVM(string vmName) {
+  public void setupVM(
+      string vmName
+  ) {
     string vmPath = ossPath ~ vmName;
     VM vm = new VM(vmName, ConfigLoader(VMMode.Setup, vmPath ~ "/config.json"));
 
     vm.setup;
   }
 
-  public void installVM(string vmName) {
+  public void installVM(
+      string vmName
+  ) {
     string vmPath = ossPath ~ vmName;
     VM vm = new VM(vmName, ConfigLoader(VMMode.Install, vmPath ~ "/config.json"));
 
     vm.boot;
   }
 
-  public void runVM(string vmName) {
+  public void runVM(
+      string vmName
+  ) {
     string vmPath = ossPath ~ vmName;
     chdir(vmPath);
 
@@ -63,7 +68,9 @@ class VMManager {
     return list;
   }
 
-  private bool isRunning(string vmName) {
+  private bool isRunning(
+      string vmName
+  ) {
     if (!this.existVM(vmName)) {
       throw new Exception("No such VM: " ~ vmName);
     }
