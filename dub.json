@@ -1,0 +1,9 @@
+{
+	"name": "xhvm",
+	"authors": [
+		"alphaKAI"
+	],
+	"description": "The xhyve VM manager",
+	"copyright": "Copyright (c) 2016, alphaKAI",
+	"license": "MIT"
+}

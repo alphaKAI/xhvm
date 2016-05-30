@@ -1,0 +1,28 @@
+{
+  "common": {
+    "ISO": "/Users/alphakai/xhyve-oss/archlinux/archlinux-2016.05.01-dual.iso",
+    "HDD":"hdd.img",
+    "MEM": "2G",
+    "SMP": "2",
+    "NET": "virtio-net",
+    "PCI_DEV": "-s 0:0,hostbridge -s 31,lpc",
+    "LPC_DEV": "-l com1,stdio",
+    "ACPI": "-A"
+  },
+  "setup": {
+    "KERNEL_PATH": "/arch/boot/x86_64/vmlinuz",
+    "INITRD_PATH": "/arch/boot/x86_64/archiso.img",
+    "HDD_BS": "1g",
+    "HDD_COUNT": "5"
+  },
+  "install": {
+    "KERNEL": "vmlinuz",
+    "INITRD": "archiso.img",
+    "CMDLINE": "console=ttyS0 archisobasedir=arch archisolabel=ARCH_201605"
+  },
+  "run": {
+    "KERNEL": "vmlinuz-linux",
+    "INITRD": "initramfs-linux.img",
+    "CMDLINE": "console=ttyS0 root=/dev/vda2 ro"
+  }
+}
