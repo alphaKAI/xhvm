@@ -13,17 +13,14 @@ import std.algorithm,
        std.conv;
 
 class VM {
-  private string ossPath;
-  public  string name;
-  public  VMMode mode;
+  private string    ossPath;
+  public  string    name;
+  public  VMMode    mode;
   public  VMOptions options;
 
-  this(
-      string vmName,
-      VMOptions vmOptions
-  ) {
+  this(string vmName, VMOptions vmOptions) {
     this.ossPath = "/Users/" ~ getpwuid(geteuid).pw_name.to!string ~ "/xhyve-oss/";
-    this.name = vmName;
+    this.name    = vmName;
     this.options = vmOptions;
   }
 
@@ -93,15 +90,11 @@ class VM {
     writeln("[xhvm - Shutdown] : " ~ name);
   }
 
-  private void execShell(
-      string commandString
-  ) {
+  private void execShell(string commandString) {
     spawnShell(commandString).wait;
   }
 
-  private string[string] buildArgsHash(
-      VMOptions options
-  ) {
+  private string[string] buildArgsHash(VMOptions options) {
     string[string] args;
 
     foreach (option; options.ConfiguredOptions) {
@@ -149,12 +142,9 @@ class VM {
     return args;
   }
 
-  private string buildArgs(
-      string[string] argsHash
-  ) {
+  private string buildArgs(string[string] argsHash) {
     //sudo xhyve $ACPI $MEM $SMP $PCI_DEV $LPC_DEV $NET $IMG_HDD -f kexec,$KERNEL,$INITRD,"$CMDLINE"
-    string command = "sudo xhyve ";
-
+    string   command    = "sudo xhyve ";
     string[] firstArgs  = ["ACPI", "MEM", "SMP", "PCI_DEV", "LPC_DEV", "NET", "IMG_CD", "IMG_HDD"];
     string[] secondArgs = ["KERNEL", "INITRD", "CMDLINE"]; 
 
